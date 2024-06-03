@@ -1,13 +1,13 @@
 package com.nasa.nasaapp.restclient;
 
 public class NasaApodObject {
-  private String id;
+  private int id;
   private String title;
   private String date;
   private String url;
   private String explanation;
   private String copyright;
-  public NasaApodObject(String id, String title, String date, String url, String explanation, String copyright) {
+  public NasaApodObject(int id, String title, String date, String url, String explanation, String copyright) {
     this.id = id;
     this.title = title;
     this.date = date;
@@ -16,7 +16,7 @@ public class NasaApodObject {
     this.copyright = copyright;
   }
 
-  public String getId() {
+  public int getId() {
     return id;
   }
 

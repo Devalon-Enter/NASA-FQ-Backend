@@ -11,9 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,15 +33,17 @@ public class NasaRestclient {
     List<NasaApodObject> nasaApodObjects = new ArrayList<>();
 
     if(apodObjects.getBody() != null) {
+      int count = 0;
       for(NasaApod apodObject: apodObjects.getBody()) {
         nasaApodObjects.add( new NasaApodObject(
-                URLEncoder.encode(apodObject.getTitle(), StandardCharsets.UTF_8),
+                count,
                 apodObject.getTitle(),
                 apodObject.getDate(),
                 apodObject.getUrl(),
                 apodObject.getExplanation(),
                 apodObject.getCopyright())
         );
+        count++;
       }
     }
     return nasaApodObjects;
